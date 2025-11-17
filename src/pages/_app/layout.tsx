@@ -20,16 +20,13 @@ export const Route = createFileRoute("/_app")({
 // Ele será usado como “casca” (layout) em volta das páginas internas.
 function AppLayout() {
   return (
-    // Elemento raiz do layout. Aqui poderia ter classes de estilização se necessário.
     <div>
-      {/* Componente de cabeçalho, aparece no topo de todas as páginas dentro desse layout */}
       <Header />
 
       {/* Outlet é o espaço onde as rotas filhas serão renderizadas.
           Ou seja, cada página específica entra aqui dentro. */}
       <Outlet />
 
-      {/* Componente de rodapé, aparece embaixo de todas as páginas dentro desse layout */}
       <Footer />
     </div>
   );
