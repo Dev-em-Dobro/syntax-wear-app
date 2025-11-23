@@ -1,6 +1,5 @@
 import Logo from "@/assets/images/logo.png";
 import IconUser from "@/assets/images/icon-user.png";
-import IconAbout from "@/assets/images/icon-about.png";
 import { Link } from "@tanstack/react-router";
 import { ShoppingCart } from "../ShoppingCart";
 import { MenuMobile } from "../MenuMobile";
@@ -11,10 +10,10 @@ export interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  {name: "Masculino", href: "/products/category/masculino"},
-  {name: "Feminino", href: "/products/category/feminino"},
-  {name: "Outlet", href: "/products/category/outlet"},
-]
+  { name: "Masculino", href: "/products/category/masculino" },
+  { name: "Feminino", href: "/products/category/feminino" },
+  { name: "Outlet", href: "/products/category/outlet" },
+];
 
 export const Header = () => {
   return (
@@ -44,16 +43,11 @@ export const Header = () => {
                 <Link to="/about">Sobre</Link>
               </li>
               <li className="lg:hidden">
-                <MenuMobile navLinks={navLinks}/>
+                <MenuMobile navLinks={navLinks} />
               </li>
               <li className="hidden lg:block">
                 <Link to="/sign-up">
                   <img src={IconUser} alt="Ícone de login" />
-                </Link>
-              </li>
-              <li className="hidden lg:block">
-                <Link to="/about">
-                  <img src={IconAbout} alt="Ícone de sobre" />
                 </Link>
               </li>
               <li>
