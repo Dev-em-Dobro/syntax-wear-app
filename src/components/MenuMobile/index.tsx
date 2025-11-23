@@ -24,7 +24,7 @@ export const MenuMobile = ({ navLinks }: MenuMobileProps) => {
 
       {/* { Overlay } */}
       <div
-        className={`${menuIsOpen ? "bg-black/70 visible" : "bg-transparent invisible"} fixed top-0 bottom-0 left-0 right-0 z-30`}
+        className={`${menuIsOpen ? "bg-black/70 visible" : "bg-transparent invisible"} fixed top-0 bottom-0 left-0 right-0 z-30 transition-all duration-600 ease-in-out`}
         onClick={() => setMenuIsOpen(!menuIsOpen)}
       >
         {/* { Drawer } */}
