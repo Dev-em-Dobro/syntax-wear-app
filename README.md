@@ -4,7 +4,9 @@ Syntax Wear é uma aplicação de e-commerce de vestuário desenvolvida com tecn
 
 ## Sobre o Projeto
 
-Este projeto é uma loja virtual completa, com páginas de produtos, categorias, carrinho de compras, autenticação de usuário e mais. A aplicação foi construída com foco em uma experiência de usuário fluida e um design moderno.
+Este projeto é uma loja virtual completa, com páginas de produtos, categorias, carrinho de compras, autenticação de usuário e mais. 
+
+A aplicação foi construída com foco em uma experiência de usuário fluida e um design moderno.
 
 ## Tecnologias Utilizadas
 
