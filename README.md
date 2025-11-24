@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# Syntax Wear
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Syntax Wear é uma aplicação de e-commerce de vestuário desenvolvida com tecnologias web modernas.
 
-Currently, two official plugins are available:
+## Sobre o Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este projeto é uma loja virtual completa, com páginas de produtos, categorias, carrinho de compras, autenticação de usuário e mais. A aplicação foi construída com foco em uma experiência de usuário fluida e um design moderno.
 
-## React Compiler
+## Tecnologias Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React**: Biblioteca para construção de interfaces de usuário.
+- **Vite**: Ferramenta de build e desenvolvimento rápido.
+- **TypeScript**: Superset do JavaScript que adiciona tipagem estática.
+- **TanStack Router**: Roteamento para a aplicação.
+- **Tailwind CSS**: Framework de CSS para estilização.
+- **React Hook Form**: Gerenciamento de formulários.
+- **Zod**: Validação de schemas.
+- **ESLint**: Ferramenta para linting do código.
 
-## Expanding the ESLint configuration
+## Começando
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Siga as instruções abaixo para rodar o projeto em sua máquina local.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Pré-requisitos
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- [Node.js](https://nodejs.org/en/) (versão 18 ou superior)
+- [npm](https://www.npmjs.com/) ou [Yarn](https://yarnpkg.com/)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Instalação
+
+1. Clone o repositório:
+   ```sh
+   git clone <url-do-repositorio>
+   ```
+2. Navegue até o diretório do projeto:
+   ```sh
+   cd syntax-wear-app
+   ```
+3. Instale as dependências:
+   ```sh
+   npm install
+   ```
+
+### Rodando a Aplicação
+
+Para iniciar o servidor de desenvolvimento, rode o seguinte comando:
+
+```sh
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+A aplicação estará disponível em `http://localhost:5173` (a porta pode variar).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Scripts Disponíveis
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `npm run dev`: Inicia o servidor de desenvolvimento.
+- `npm run build`: Compila o projeto para produção.
+- `npm run lint`: Executa o linter para verificar a qualidade do código.
+- `npm run preview`: Inicia um servidor para visualizar a build de produção.
