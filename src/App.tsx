@@ -30,5 +30,4 @@ function App() {
   );
 }
 
-// Exporta o componente `App` para que ele possa ser usado em outras partes do projeto.
 export default App;
