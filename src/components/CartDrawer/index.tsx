@@ -45,7 +45,7 @@ export const CartDrawer = ({ isOpen, onClose }: CartDrawerProps) => {
 
                 <div className="flex gap-4">
                   <img
-                    src={product.image}
+                    src={product.images[0]}
                     alt={product.name}
                     className="w-24 h-24 md:w-32 md:h-32"
                   />
