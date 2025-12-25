@@ -35,3 +35,18 @@ export async function getProducts({ page, limit = DEFAULT_LIMIT }:  GetProductPa
         throw new Error('Erro desconhecido ao buscar produtos.');
     }
 }
+
+export async function getProductByCategoryId(categoryId: number, paginationParams?: GetProductParams): Promise<ProductResponse> {
+    const params = new URLSearchParams({
+        page: paginationParams?.page.toString() || '1',
+        limit: (paginationParams?.limit || DEFAULT_LIMIT).toString(),
+        categoryId: categoryId.toString()
+    });
+    const response = await fetch(`${API_BASE_URL}/products?${params.toString()}`);
+
+    if (!response.ok) { 
+        throw new Error(`Erro ao buscar produtos por categoria: ${response.statusText}`);
+    }
+
+    return await response.json();
+}
