@@ -1,10 +1,12 @@
 import Logo from "@/assets/images/logo.png";
 import IconUser from "@/assets/images/icon-user.png";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { MenuMobile } from "../MenuMobile";
 import { CartButton } from "../CartButton";
 import { CartDrawer } from "../CartDrawer";
 import { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext/AuthContext";
+import { PiSignOut } from "react-icons/pi";
 
 export interface NavLink {
   name: string;
@@ -18,8 +20,14 @@ const navLinks: NavLink[] = [
 ];
 
 export const Header = () => {
-
+  const { isAuthenticated, signOut } = useAuth();
   const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate({ to: "/" });
+  };
 
   return (
     <div className="relative">
@@ -51,12 +59,23 @@ export const Header = () => {
                 <MenuMobile navLinks={navLinks} />
               </li>
               <li className="hidden lg:block">
-                <Link to="/sign-up">
-                  <img src={IconUser} alt="Ícone de login" />
-                </Link>
+                {!isAuthenticated ? (
+                  <Link to="/sign-up">
+                    <img src={IconUser} alt="Ícone de login" />
+                  </Link>
+                ) : (
+                  <button
+                    onClick={handleSignOut}
+                    className="flex cursor-pointer hover:opacity-70 transition-opacity items-center gap-2"
+                    title="Sair"
+                  >
+                    Sair
+                    <PiSignOut className="w-6 h-6" />
+                  </button>
+                )}
               </li>
               <li>
-                <CartButton onClick={() => setCartIsOpen(true)}/>
+                <CartButton onClick={() => setCartIsOpen(true)} />
               </li>
             </ul>
           </nav>

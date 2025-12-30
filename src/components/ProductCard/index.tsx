@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { Product } from "../../interfaces/product"
 import { MdAddShoppingCart } from "react-icons/md";
-import { CartContext } from "../../contexts/CartContext";
+import { CartContext } from "../../contexts/CartContext/CartContext";
 import { useContext } from "react";
 import { formatCurrency } from "../../utils/format-currency";
 

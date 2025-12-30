@@ -1,4 +1,4 @@
-import { use, useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AuthContext,
   type Credentials,
@@ -26,12 +26,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           throw new Error("Erro ao buscar perfil do usuário");
         }
 
-        const data = await response.json();
-        setUser(data.user);
-        setIsAuthenticated(true);
-      
-        console.log(data.user);
-        
+        const userData = await response.json();
+
+        if (userData) {
+          setUser(userData);
+          setIsAuthenticated(true);
+        }
       } catch (error) {
         console.error("Erro ao buscar perfil do usuário:", error);
         setUser(null);
@@ -64,9 +64,40 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   async function register(data: RegisterInput): Promise<void> {}
 
-  function signOut(): void {
-    setUser(null);
-    setIsAuthenticated(false);
+  async function signOut(): Promise<void> {
+    try {
+      await fetch("http://localhost:3000/auth/logout", {
+        method: "POST",
+        credentials: "include", // faz com que os cookies sejam enviados junto com a requisição
+      });
+    }catch (error) {
+      console.error("Erro ao fazer logout:", error);
+    } finally {
+      setUser(null);
+      setIsAuthenticated(false);
+    }
+  }
+
+  async function signInWithGoogle(credential: string): Promise<void> {
+    const response = await fetch("http://localhost:3000/auth/google", {
+      method: "POST",
+      credentials: "include", // faz com que os cookies sejam enviados junto com a requisição
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ credential }),
+    });
+
+    const result = await response.json();
+
+    console.log("result:", result);
+
+    if (!response.ok || !result.user) {
+      throw new Error(result.message || "Erro ao fazer login com Google");
+    }
+
+    setUser(result.user);
+    setIsAuthenticated(true);
   }
 
   const value = {
@@ -75,6 +106,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     signIn,
     register,
     signOut,
+    signInWithGoogle,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
